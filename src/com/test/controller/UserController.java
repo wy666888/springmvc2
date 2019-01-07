@@ -12,8 +12,13 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/user")
 public class UserController {
 
-	@RequestMapping(value="/addUser",method=RequestMethod.POST)
-	public String add(HttpServletRequest requ, HttpServletResponse resp) throws Exception {
+	@RequestMapping(value="/addUser1",method=RequestMethod.POST)
+	public String add1(HttpServletRequest requ, HttpServletResponse resp) throws Exception {
+		// TODO Auto-generated method stub
+		return "/userDetail";
+	}
+	@RequestMapping("/addUser2")
+	public String add2(String username,String age,HttpServletRequest requ, HttpServletResponse resp) throws Exception {
 		// TODO Auto-generated method stub
 		return "/userDetail";
 	}
