@@ -13,24 +13,27 @@ import org.springframework.web.servlet.ModelAndView;
 public class UserController {
 
 	@RequestMapping(value="/addUser",method=RequestMethod.POST)
-	public ModelAndView add(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
+	public String add(HttpServletRequest requ, HttpServletResponse resp) throws Exception {
 		// TODO Auto-generated method stub
 		System.out.println("=======springmvc======");
 		String method = "add";
-		return new ModelAndView("user","method",method);
+		requ.setAttribute("method", method);
+		return "/user";
 	}
 	@RequestMapping("/deleteUser")
-	public ModelAndView delete(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
+	public String delete(HttpServletRequest requ, HttpServletResponse resp) throws Exception {
 		// TODO Auto-generated method stub
 		System.out.println("=======springmvc======");
 		String method = "delete";
-		return new ModelAndView("user","method",method);
+		requ.setAttribute("method", method);
+		return "/user";
 	}
 	@RequestMapping("/listUser")
-	public ModelAndView list(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
+	public String list(HttpServletRequest requ, HttpServletResponse resp) throws Exception {
 		// TODO Auto-generated method stub
 		System.out.println("=======springmvc======");
 		String method = "list";
-		return new ModelAndView("user","method",method);
+		requ.setAttribute("method", method);
+		return "/user";
 	}
 }
