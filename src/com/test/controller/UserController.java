@@ -15,10 +15,7 @@ public class UserController {
 	@RequestMapping(value="/addUser",method=RequestMethod.POST)
 	public String add(HttpServletRequest requ, HttpServletResponse resp) throws Exception {
 		// TODO Auto-generated method stub
-		System.out.println("=======springmvc======");
-		String method = "add";
-		requ.setAttribute("method", method);
-		return "/user";
+		return "/userDetail";
 	}
 	@RequestMapping("/deleteUser")
 	public String delete(HttpServletRequest requ, HttpServletResponse resp) throws Exception {
@@ -31,9 +28,8 @@ public class UserController {
 	@RequestMapping("/listUser")
 	public String list(HttpServletRequest requ, HttpServletResponse resp) throws Exception {
 		// TODO Auto-generated method stub
-		System.out.println("=======springmvc======");
-		String method = "list";
-		requ.setAttribute("method", method);
-		return "/user";
+		/*String method = "list";
+		requ.setAttribute("method", method);*/
+		return "/addUser";
 	}
 }
