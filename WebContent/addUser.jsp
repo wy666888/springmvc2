@@ -11,7 +11,7 @@
 <hr>
 <h2>添加用户</h2>
 <hr>
-<form action="addUser2" method="post">
+<form action="addUser3" method="post">
 	姓名:<input type="text" name="username"/>
 	年龄:<input type="text" name="age"/>
 	<input type="submit" value="添加"/>

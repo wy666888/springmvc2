@@ -13,6 +13,10 @@
 <hr>
 姓名：${param.username }
 <br>
+姓名：${user.username }
+<br>
 年龄：${age }
+<br>
+年龄：${user.age }
 </body>
 </html>
