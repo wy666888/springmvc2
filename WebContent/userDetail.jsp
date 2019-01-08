@@ -15,7 +15,7 @@
 <br>
 姓名：${user.username }
 <br>
-年龄：${age }
+年龄：${param.age }
 <br>
 年龄：${user.age }
 </body>

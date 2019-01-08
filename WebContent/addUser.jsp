@@ -6,15 +6,38 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript" src="../resources/js/jquery.min.js"></script>
 </head>
+<script type="text/javascript">
+$(function(){
+	$("#btnAdd").click(function(){
+		var username = $("#username").val();
+		var age = $("#age").val();
+		var user = {
+				username:username,
+				age:age
+		}
+		$.ajax({
+			url:"addUser4",
+			data:user,
+			method:"post",
+			dataType:"json",
+			success:function(data){
+				alert("name==="+data.username+",age==="+data.age);
+			}
+		});
+	});
+});
+</script>
 <body>
 <hr>
 <h2>添加用户</h2>
 <hr>
 <form action="addUser3" method="post">
-	姓名:<input type="text" name="username"/>
-	年龄:<input type="text" name="age"/>
+	姓名:<input id="username" type="text" name="username"/>
+	年龄:<input id="age" type="text" name="age"/>
 	<input type="submit" value="添加"/>
+	<input id="btnAdd" type="button" value="ajax添加">
 </form>
 </body>
 </html>

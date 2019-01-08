@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.alibaba.fastjson.JSON;
 import com.test.entity.User;
 
 @Controller
@@ -29,6 +30,18 @@ public class UserController {
 		
 		requ.setAttribute("user", user);
 		return "/userDetail";
+	}
+	@RequestMapping("/addUser4")
+	public void add4(User user,HttpServletRequest requ, HttpServletResponse response) throws Exception {
+		// ajax返回json到前台
+		
+		String jsonStr = JSON.toJSONString(user);
+		
+		response.setCharacterEncoding("utf-8");
+		
+		response.getWriter().write(jsonStr);
+		
+		response.getWriter().close();
 	}
 	@RequestMapping("/deleteUser")
 	public String delete(HttpServletRequest requ, HttpServletResponse resp) throws Exception {
