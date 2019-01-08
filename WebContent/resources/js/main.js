@@ -8,7 +8,7 @@ function ajax_post(urlStr,para,options){
 	$.ajax({
 		url:urlStr,
 		data:para,
-		method:"post",
+		type:"post",
 		dataType:"json",
 		error:function(){
 			options.fail&&options.fail();

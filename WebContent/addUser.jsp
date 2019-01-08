@@ -20,19 +20,19 @@ $(function(){
 				age:age
 		};
 		var url = "addUser4";
-		ajax_post(url,user,{success:function(data){
+		/* ajax_post(url,user,{success:function(data){
 			alert("name==="+data.username+",age==="+data.age);
 		}
-		});
-		/* $.ajax({
+		}); */
+		$.ajax({
 			url:"addUser4",
 			data:user,
-			method:"post",
+			type:"get",
 			dataType:"json",
 			success:function(data){
 				alert("name==="+data.username+",age==="+data.age);
 			}
-		}); */
+		});
 	});
 });
 </script>
