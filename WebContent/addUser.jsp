@@ -7,8 +7,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript" src="../resources/js/jquery.min.js"></script>
+<script type="text/javascript" src="../resources/js/main.js"></script>
 </head>
 <script type="text/javascript">
+
 $(function(){
 	$("#btnAdd").click(function(){
 		var username = $("#username").val();
@@ -16,8 +18,13 @@ $(function(){
 		var user = {
 				username:username,
 				age:age
+		};
+		var url = "addUser4";
+		ajax_post(url,user,{success:function(data){
+			alert("name==="+data.username+",age==="+data.age);
 		}
-		$.ajax({
+		});
+		/* $.ajax({
 			url:"addUser4",
 			data:user,
 			method:"post",
@@ -25,7 +32,7 @@ $(function(){
 			success:function(data){
 				alert("name==="+data.username+",age==="+data.age);
 			}
-		});
+		}); */
 	});
 });
 </script>

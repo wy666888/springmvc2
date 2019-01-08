@@ -1,5 +1,7 @@
 package com.test.controller;
 
+import java.io.IOException;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.alibaba.fastjson.JSON;
 import com.test.entity.User;
+import com.test.util.StaticMethod;
 
 @Controller
 @RequestMapping("/user")
@@ -35,14 +38,16 @@ public class UserController {
 	public void add4(User user,HttpServletRequest requ, HttpServletResponse response) throws Exception {
 		// ajax返回json到前台
 		
-		String jsonStr = JSON.toJSONString(user);
+		/*String jsonStr = JSON.toJSONString(user);
 		
 		response.setCharacterEncoding("utf-8");
 		
 		response.getWriter().write(jsonStr);
 		
-		response.getWriter().close();
+		response.getWriter().close();*/
+		StaticMethod.renderJson(user,response);
 	}
+	
 	@RequestMapping("/deleteUser")
 	public String delete(HttpServletRequest requ, HttpServletResponse resp) throws Exception {
 		// 可以向前台传递参数
