@@ -16,7 +16,7 @@
 <hr>
 <h2>文件上传</h2>
 <hr>
-<form action="upload" method="post" enctype="multipart/form-data">
+<form action="upload2" method="post" enctype="multipart/form-data">
 	选择文件:<input type="file" name="file"/>
 	<input type="submit" value="上传"/>
 </form>

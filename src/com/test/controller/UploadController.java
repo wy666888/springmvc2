@@ -1,8 +1,10 @@
 package com.test.controller;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.util.Date;
+import java.util.Iterator;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -11,7 +13,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 import com.test.entity.User;
 import com.test.util.StaticMethod;
@@ -51,6 +56,13 @@ public class UploadController {
 		StaticMethod.renderJson(user,response);
 	}
 	
+	/**单文件上传模拟
+	 * @param file
+	 * @param requ
+	 * @param resp
+	 * @return
+	 * @throws Exception
+	 */
 	@RequestMapping("/upload")
 	public String upload(@RequestParam("file")CommonsMultipartFile file,HttpServletRequest requ, HttpServletResponse resp) throws Exception {
 		String filename = file.getOriginalFilename();
@@ -65,6 +77,24 @@ public class UploadController {
 			os.flush();
 			os.close();
 			in.close();
+		}
+		return "/success";
+	}
+	@RequestMapping("/upload2")
+	public String upload2(HttpServletRequest requ, HttpServletResponse resp) throws Exception {
+		CommonsMultipartResolver resol = new CommonsMultipartResolver(requ.getSession().getServletContext());
+		if(resol.isMultipart(requ)) {
+			MultipartHttpServletRequest multiRequ = (MultipartHttpServletRequest)requ;
+			Iterator<String> iter = multiRequ.getFileNames();
+			while(iter.hasNext()) {
+				String filename = iter.next();
+				MultipartFile file = multiRequ.getFile(filename);
+				if(file!=null) {
+					String path = "D:/"+new Date().getTime()+file.getOriginalFilename();
+					File localFile = new File(path);
+					file.transferTo(localFile);
+				}
+			}
 		}
 		return "/success";
 	}
