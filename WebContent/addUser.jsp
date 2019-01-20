@@ -25,12 +25,13 @@ $(function(){
 		}
 		}); */
 		$.ajax({
-			url:"addUser4",
+			url:"addUser3",
 			data:user,
-			type:"get",
-			dataType:"json",
+			//type:"get",
+			//dataType:"json",
 			success:function(data){
-				alert("name==="+data.username+",age==="+data.age);
+				//alert("name==="+data.username+",age==="+data.age);
+				$("#content").html(data);
 			}
 		});
 	});
@@ -46,5 +47,8 @@ $(function(){
 	<input type="submit" value="添加"/>
 	<input id="btnAdd" type="button" value="ajax添加">
 </form>
+<div id="content">
+
+</div>
 </body>
 </html>
