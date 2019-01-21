@@ -111,4 +111,8 @@ public class UploadController {
 	public String toUpload(HttpServletRequest requ, HttpServletResponse resp) throws Exception {
 		return "/upload";
 	}
+	@RequestMapping("/toMultiUpload")
+	public String toMultiUpload(HttpServletRequest requ, HttpServletResponse resp) throws Exception {
+		return "/multiUpload";
+	}
 }
