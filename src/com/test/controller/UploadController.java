@@ -68,20 +68,24 @@ public class UploadController {
 		String filename = file.getOriginalFilename();
 		System.out.println("filename----->"+filename);
 		if(!file.isEmpty()) {
-			FileOutputStream os = new FileOutputStream("D:/"+new Date().getTime()+filename);
-			InputStream in = file.getInputStream();
+			//FileOutputStream os = new FileOutputStream("D:/"+new Date().getTime()+filename);
+			//InputStream in = file.getInputStream();
 			/*int b = 0;
 			while((b=in.read())!=-1) {
 				os.write(b);
 			}*/
-			byte[] b = new byte[1024];
+			/*byte[] b = new byte[1024];
 			int len = 0;
 			while((len=in.read(b))!=-1) {
 				os.write(b, 0, len);
 			}
 			os.flush();
 			os.close();
-			in.close();
+			in.close();*/
+			
+			String path = "D:/"+new Date().getTime()+filename;
+			File localFile = new File(path);
+			file.transferTo(localFile);
 		}
 		return "/success";
 	}
